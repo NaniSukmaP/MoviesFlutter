@@ -24,13 +24,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         leading: Icon(
           Icons.dehaze,
-          color: Colors.black,
+          color: Colors.white,
         ),
         actions: <Widget>[
           IconButton(
               icon: Icon(
                 Icons.search,
-                color: Colors.black,
+                color: Colors.white,
               ),
               onPressed: null)
         ],

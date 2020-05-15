@@ -24,11 +24,16 @@ class _DetailScreenState extends State<DetailScreen> {
     return Scaffold(
         backgroundColor: Colors.indigo[50],
         appBar: AppBar(
+          backgroundColor: Colors.indigo[400],
+          centerTitle: true,
+          title: Text(widget.movie.title),
           actions: <Widget>[
-            Text(widget.movie.title),
-            Icon(
-              Icons.ac_unit,
-              size: 100,
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: Icon(
+                Icons.search,
+                size: 25,
+              ),
             )
           ],
         ),
@@ -59,32 +64,73 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
             ),
             Container(
-                color: Colors.indigo[100],
                 margin: EdgeInsets.only(top: 8.0),
                 child: Column(
                   children: <Widget>[
                     Container(
-                        margin: EdgeInsets.all(16.0),
+                        //color: Colors.indigo[300],
+                        decoration: BoxDecoration(
+                          color: Colors.indigo[400],
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(24.0),
+                              topRight: Radius.circular(24.0)),
+                        ),
+                        padding: EdgeInsets.fromLTRB(0.0, 16.0, 0.0, 16.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Column(
                               children: <Widget>[
-                                Text("Popularity"),
-                                Text(widget.movie.popularity.toString()),
-                              ],
-                            ),
-                            Column(
-                              children: <Widget>[
-                                Text("iMDB"),
                                 Text(
-                                    '${widget.movie.voteAverage.toString()}/10'),
+                                  "Popularity",
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  widget.movie.popularity.toString(),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ],
                             ),
                             Column(
                               children: <Widget>[
-                                Text("Vote"),
-                                Text(widget.movie.voteCount.toString()),
+                                Text(
+                                  "iMDB",
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  '${widget.movie.voteAverage.toString()}/10',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              children: <Widget>[
+                                Text(
+                                  "Vote",
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  widget.movie.voteCount.toString(),
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ],
                             ),
                           ],
@@ -96,11 +142,11 @@ class _DetailScreenState extends State<DetailScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
                               Container(
-                                padding: EdgeInsets.all(16.0),
+                                // padding: EdgeInsets.all(16.0),
                                 margin:
-                                    EdgeInsets.fromLTRB(16.0, 16.0, 12.0, 16.0),
-                                height: 150,
-                                width: 100,
+                                    EdgeInsets.fromLTRB(16.0, 16.0, 4.0, 16.0),
+                                height: 175,
+                                width: 120,
                                 decoration: BoxDecoration(
                                   color: Colors.pink,
                                   boxShadow: [
@@ -111,9 +157,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                         offset: Offset(1.0, 1.0)),
                                   ],
                                   //shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(24.0),
-                                      bottomRight: Radius.circular(24.0)),
+                                  borderRadius: BorderRadius.circular(24.0),
                                   image: DecorationImage(
                                     image: NetworkImage(
                                         'http://image.tmdb.org/t/p/w400/' +
@@ -127,15 +171,27 @@ class _DetailScreenState extends State<DetailScreen> {
                                 width: MediaQuery.of(context).size.width * 0.5,
                                 height:
                                     MediaQuery.of(context).size.height * 0.2,
-                                decoration: BoxDecoration(color: Colors.blue),
-                                //padding: EdgeInsets.all(8.0),
-                                margin: EdgeInsets.all(12.0),
+                                decoration: BoxDecoration(
+                                  color: Colors.indigo[300],
+                                  borderRadius: BorderRadius.circular(24.0),
+                                ),
+                                padding: EdgeInsets.all(16.0),
+                                margin:
+                                    EdgeInsets.fromLTRB(4.0, 16.0, 16.0, 16.0),
                                 child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Text(widget.movie.title),
-                                    Text(widget.movie.originalTitle),
-                                    Text(widget.movie.originalLanguage
-                                        .toString()),
+                                    Text('Original Title '),
+                                    Text(
+                                      widget.movie.originalTitle,
+                                      maxLines: 2,
+                                    ),
+                                    Text('Laguage '),
+                                    Text(
+                                      widget.movie.originalLanguage.toString(),
+                                    ),
+                                    Text('Realesed '),
                                     Text(widget.movie.releaseDate.year
                                         .toString())
                                   ],
