@@ -46,21 +46,6 @@ class MovieRepository {
     }
   }
 
-  // Future<MovieResponse> getDiscoverMovies() async {
-  //   var params = {
-  //     "api_key": apiKey,
-  //     "language": "en-US",
-  //   };
-  //   try {
-  //     Response response =
-  //         await _dio.get(getDiscoverMoviesUrl, queryParameters: params);
-  //     return MovieResponse.fromJson(response.data);
-  //   } catch (error, stacktrace) {
-  //     print("Exception error: $error stackTrace: $stacktrace");
-  //     return MovieResponse.withError(error);
-  //   }
-  // }
-
   Future<MovieResponse> getNowPlayingMovies() async {
     var params = {
       "api_key": apiKey,

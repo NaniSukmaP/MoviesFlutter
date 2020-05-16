@@ -8,7 +8,7 @@ class Artist {
   final List<KnownFor> knownFor;
   final int gender;
 
-  Artist(
+  Artist({
     this.popularity,
     this.knownForDepartment,
     this.name,
@@ -17,7 +17,7 @@ class Artist {
     this.adult,
     this.knownFor,
     this.gender,
-  );
+  });
 
   Artist.fromJson(Map<String, dynamic> json)
       : popularity = json["popularity"].toDouble(),
