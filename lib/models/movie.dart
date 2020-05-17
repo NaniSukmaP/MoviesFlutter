@@ -1,5 +1,5 @@
 class Movie {
-  final double popularity;
+  double popularity;
   int voteCount;
   bool video;
   String posterPath;
@@ -14,7 +14,7 @@ class Movie {
   String overview;
   DateTime releaseDate;
 
-  Movie(
+  Movie({
     this.popularity,
     this.voteCount,
     this.video,
@@ -28,7 +28,7 @@ class Movie {
     this.voteAverage,
     this.overview,
     this.releaseDate,
-  );
+  });
 
   Movie.fromJson(Map<String, dynamic> json)
       : popularity = json["popularity"].toDouble(),

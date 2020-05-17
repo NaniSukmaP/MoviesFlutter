@@ -51,10 +51,11 @@ class _GenreScreenState extends State<GenreScreen> {
       return Container(
         child: Text("There is no genre"),
       );
-    } else
+    } else {
       return GenreList(
         genres: genres,
       );
+    }
   }
 
   Widget _buildLoadingWidget() {

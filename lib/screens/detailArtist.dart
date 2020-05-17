@@ -31,15 +31,6 @@ class _DetailArtisState extends State<DetailArtis> {
           backgroundColor: Colors.indigo[400],
           centerTitle: true,
           title: Text(widget.artist.name),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: Icon(
-                Icons.search,
-                size: 25,
-              ),
-            )
-          ],
         ),
         body: Container(
           margin: EdgeInsets.all(12.0),

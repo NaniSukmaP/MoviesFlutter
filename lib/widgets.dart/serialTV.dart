@@ -1,26 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:project_movies/blocs/getSerialBloc.dart';
+import 'package:project_movies/blocs/getSerialBlocbyGenres.dart';
 import 'package:project_movies/models/serial.dart';
 import 'package:project_movies/models/serialResponse.dart';
 import 'package:project_movies/screens/detailScreenSerial.dart';
 
 class SerialTV extends StatefulWidget {
+  final int genreId;
+  SerialTV({Key key, @required this.genreId}) : super(key: key);
   @override
-  _SerialTVState createState() => _SerialTVState();
+  _SerialTVState createState() => _SerialTVState(genreId);
 }
 
 class _SerialTVState extends State<SerialTV> {
+  final int genreId;
+  _SerialTVState(this.genreId);
   @override
   void initState() {
     super.initState();
-    serialBloc..getSerialTV();
+    serialBlocbyGenre..getSerialByGenre(genreId);
+    //serialBloc..getSerialTV(genreId);
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<SerialResponse>(
-        stream: serialBloc.subject.stream,
+        stream: serialBlocbyGenre.subject.stream,
         builder: (context, AsyncSnapshot<SerialResponse> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data.error != null && snapshot.data.error.length > 0) {
@@ -40,6 +46,7 @@ class _SerialTVState extends State<SerialTV> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Text("Error LOading"),
           SizedBox(
             height: 25.0,
             width: 25.0,

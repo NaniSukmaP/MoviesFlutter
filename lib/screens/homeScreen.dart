@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          SerialTV(),
+          //SerialTV(),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(

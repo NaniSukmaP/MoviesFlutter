@@ -28,15 +28,6 @@ class _DetailScreenSerialState extends State<DetailScreenSerial> {
           backgroundColor: Colors.indigo[400],
           centerTitle: true,
           title: Text(widget.serial.name),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: Icon(
-                Icons.search,
-                size: 25,
-              ),
-            )
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(

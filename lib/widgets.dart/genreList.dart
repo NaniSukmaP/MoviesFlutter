@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_movies/models/genre.dart';
+import 'package:project_movies/models/serial.dart';
 import 'package:project_movies/widgets.dart/genreMovies.dart';
+import 'package:project_movies/widgets.dart/serialTV.dart';
 
 class GenreList extends StatefulWidget {
   final List<Genre> genres;
@@ -62,7 +64,7 @@ class _GenreListState extends State<GenreList>
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
               children: genres.map((Genre genre) {
-                return GenreMovies(
+                return SerialTV(
                   genreId: genre.id,
                 );
               }).toList(),

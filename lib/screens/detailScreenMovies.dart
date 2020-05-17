@@ -27,15 +27,6 @@ class _DetailScreenState extends State<DetailScreen> {
           backgroundColor: Colors.indigo[400],
           centerTitle: true,
           title: Text(widget.movie.title),
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: Icon(
-                Icons.search,
-                size: 25,
-              ),
-            )
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -198,6 +189,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                             color: Colors.white,
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold),
+                                        textAlign: TextAlign.center,
                                       ),
                                       Text(
                                         'Language ',

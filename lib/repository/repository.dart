@@ -14,6 +14,7 @@ class MovieRepository {
   var getGenresUrl = '$url/genre/movie/list';
   var getArtistPopularUrl = '$url/person/popular';
   var getSerial = '$url/tv/on_the_air';
+  var getSerialGenre = '$url/discover/tv';
   // var getPopularMoviesUrl = '$url/movie/top_rated'; //serial TV
   // var getPopularMoviesUrl = '$url/movie/top_rated';
 
@@ -84,6 +85,18 @@ class MovieRepository {
     } catch (error, stacktrace) {
       print("Exception error: $error stackTrace: $stacktrace");
       return MovieResponse.withError(error);
+    }
+  }
+
+  Future<SerialResponse> getSerialByGenre(int id) async {
+    var params = {"api_key": apiKey, "language": "en-US", "with_genres": id};
+    try {
+      Response response =
+          await _dio.get(getSerialGenre, queryParameters: params);
+      return SerialResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception error: $error stackTrace: $stacktrace");
+      return SerialResponse.withError(error);
     }
   }
 
