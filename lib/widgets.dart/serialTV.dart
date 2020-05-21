@@ -7,26 +7,26 @@ import 'package:project_movies/models/serialResponse.dart';
 import 'package:project_movies/screens/detailScreenSerial.dart';
 
 class SerialTV extends StatefulWidget {
-  final int genreId;
-  SerialTV({Key key, @required this.genreId}) : super(key: key);
+  //final int genreId;
+  //SerialTV({Key key, @required this.genreId}) : super(key: key);
   @override
-  _SerialTVState createState() => _SerialTVState(genreId);
+  _SerialTVState createState() => _SerialTVState();
 }
 
 class _SerialTVState extends State<SerialTV> {
-  final int genreId;
-  _SerialTVState(this.genreId);
+  // final int genreId;
+  // _SerialTVState(this.genreId);
   @override
   void initState() {
     super.initState();
-    serialBlocbyGenre..getSerialByGenre(genreId);
-    //serialBloc..getSerialTV(genreId);
+    // serialBlocbyGenre..getSerialByGenre(genreId);
+    serialBloc..getSerialTV();
   }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<SerialResponse>(
-        stream: serialBlocbyGenre.subject.stream,
+        stream: serialBloc.subject.stream,
         builder: (context, AsyncSnapshot<SerialResponse> snapshot) {
           if (snapshot.hasData) {
             if (snapshot.data.error != null && snapshot.data.error.length > 0) {

@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:project_movies/models/artistResponse.dart';
+import 'package:project_movies/models/castResponse.dart';
 import 'package:project_movies/models/genreResponse.dart';
+import 'package:project_movies/models/movieDetailResponse.dart';
 import 'package:project_movies/models/movieResponse.dart';
 import 'package:project_movies/models/serialResponse.dart';
 
@@ -15,7 +17,7 @@ class MovieRepository {
   var getArtistPopularUrl = '$url/person/popular';
   var getSerial = '$url/tv/on_the_air';
   var getSerialGenre = '$url/discover/tv';
-  // var getPopularMoviesUrl = '$url/movie/top_rated'; //serial TV
+  var movieDetailUrl = '$url/movie';
   // var getPopularMoviesUrl = '$url/movie/top_rated';
 
   Future<MovieResponse> getPopularMovies() async {
@@ -112,6 +114,35 @@ class MovieRepository {
     } catch (error, stacktrace) {
       print("Exception error: $error stackTrace: $stacktrace");
       return ArtistResponse.withError(error);
+    }
+  }
+
+  Future<MovieDetailResponse> getMovieDetail(int id) async {
+    var params = {
+      "api_key": apiKey,
+      "language": "en-US",
+    };
+    try {
+      Response response =
+          await _dio.get(movieDetailUrl + "/$id", queryParameters: params);
+      return MovieDetailResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception error: $error stackTrace: $stacktrace");
+      return MovieDetailResponse.withError(error);
+    }
+  }
+  Future<CastResponse> getCast(int id)async{
+      var params = {
+      "api_key": apiKey,
+      "language": "en-US",
+    };
+    try {
+      Response response =
+          await _dio.get(movieDetailUrl + "/$id" +"/credits", queryParameters: params);
+      return CastResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception error: $error stackTrace: $stacktrace");
+      return CastResponse.withError(error);
     }
   }
 }

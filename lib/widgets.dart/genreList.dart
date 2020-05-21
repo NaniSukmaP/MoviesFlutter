@@ -64,7 +64,7 @@ class _GenreListState extends State<GenreList>
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
               children: genres.map((Genre genre) {
-                return SerialTV(
+                return GenreMovies(
                   genreId: genre.id,
                 );
               }).toList(),

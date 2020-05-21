@@ -40,14 +40,14 @@ class _MyHomePageState extends State<MyHomePage> {
           NowPlaying(),
           GenreScreen(),
           Text(
-            "SERIAL TV",
+            " POPULAR SERIAL TV",
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 14.0,
                 fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,
           ),
-          //SerialTV(),
+          SerialTV(),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(

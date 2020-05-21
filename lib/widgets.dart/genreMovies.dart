@@ -136,16 +136,17 @@ class _GenreMoviesState extends State<GenreMovies> {
                           ),
                         ),
                   Container(
-                      width: 75,
-                      child: Text(
-                        movies[index].title,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 10.0,
-                        ),
-                        maxLines: 2,
-                      ))
+                    width: 75,
+                    child: Text(
+                      movies[index].title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 10.0,
+                      ),
+                      maxLines: 2,
+                    ),
+                  ),
                 ],
               ),
             );

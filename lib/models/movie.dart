@@ -1,10 +1,8 @@
 class Movie {
   double popularity;
   int voteCount;
-  bool video;
   String posterPath;
   int id;
-  bool adult;
   String backdropPath;
   OriginalLanguage originalLanguage;
   String originalTitle;
@@ -17,10 +15,8 @@ class Movie {
   Movie({
     this.popularity,
     this.voteCount,
-    this.video,
     this.posterPath,
     this.id,
-    this.adult,
     this.backdropPath,
     this.originalLanguage,
     this.originalTitle,
@@ -33,10 +29,8 @@ class Movie {
   Movie.fromJson(Map<String, dynamic> json)
       : popularity = json["popularity"].toDouble(),
         voteCount = json["vote_count"],
-        video = json["video"],
         posterPath = json["poster_path"],
         id = json["id"],
-        adult = json["adult"],
         backdropPath = json["backdrop_path"],
         originalLanguage =
             originalLanguageValues.map[json["original_language"]],

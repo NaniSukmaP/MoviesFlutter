@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_movies/blocs/getMovieBloc.dart';
 import 'package:project_movies/models/movie.dart';
+import 'package:project_movies/widgets.dart/movieDetailWidget.dart';
 
 class DetailScreen extends StatefulWidget {
   final Movie movie;
@@ -133,44 +134,48 @@ class _DetailScreenState extends State<DetailScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
-                                Container(
-                                  // padding: EdgeInsets.all(16.0),
-                                  margin: EdgeInsets.fromLTRB(
-                                      16.0, 16.0, 4.0, 16.0),
-                                  height: 175,
-                                  width: 120,
-                                  decoration: BoxDecoration(
-                                    color: Colors.pink,
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.indigo[400],
-                                          blurRadius: 2.0,
-                                          spreadRadius: 1.0,
-                                          offset: Offset(1.0, 1.0)),
-                                    ],
-                                    //shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(24.0),
-                                    image: DecorationImage(
-                                      image: NetworkImage(
-                                          'http://image.tmdb.org/t/p/w400/' +
-                                              widget.movie.posterPath),
-                                      fit: BoxFit.cover,
+                                Column(
+                                  children: <Widget>[
+                                    Container(
+                                      // padding: EdgeInsets.all(16.0),
+                                      margin: EdgeInsets.fromLTRB(
+                                          16.0, 16.0, 4.0, 16.0),
+                                      height: 100,
+                                      width: 75,
+                                      decoration: BoxDecoration(
+                                        color: Colors.pink,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Colors.indigo[400],
+                                              blurRadius: 2.0,
+                                              spreadRadius: 1.0,
+                                              offset: Offset(1.0, 1.0)),
+                                        ],
+                                        //shape: BoxShape.rectangle,
+                                        borderRadius:
+                                            BorderRadius.circular(2.0),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                              'http://image.tmdb.org/t/p/w400/' +
+                                                  widget.movie.posterPath),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                                 Container(
                                   //color: Colors.amber,
                                   width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.2,
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  height: 100,
                                   decoration: BoxDecoration(
                                     color: Colors.indigo[300],
                                     borderRadius: BorderRadius.circular(24.0),
                                   ),
-                                  padding: EdgeInsets.all(16.0),
-                                  margin: EdgeInsets.fromLTRB(
-                                      4.0, 16.0, 16.0, 16.0),
+                                  padding: EdgeInsets.all(8.0),
+                                  // margin:
+                                  //     EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 8.0),
                                   child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -179,15 +184,16 @@ class _DetailScreenState extends State<DetailScreen> {
                                         'Original Title ',
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 12.0,
+                                          fontSize: 10.0,
                                         ),
                                       ),
                                       Text(
-                                        widget.movie.originalTitle,
+                                        widget.movie.originalTitle
+                                            .toUpperCase(),
                                         maxLines: 2,
                                         style: TextStyle(
                                             color: Colors.white,
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.bold),
                                         textAlign: TextAlign.center,
                                       ),
@@ -195,42 +201,32 @@ class _DetailScreenState extends State<DetailScreen> {
                                         'Language ',
                                         style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 12.0,
+                                          fontSize: 10.0,
                                         ),
                                       ),
                                       (widget.movie.originalLanguage
                                                   .toString() ==
                                               "OriginalLanguage.EN")
-                                          ? Text("English",
+                                          ? Text("ENGLISH",
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontSize: 16,
+                                                  fontSize: 14,
                                                   fontWeight: FontWeight.bold))
-                                          : Text("Non-English",
+                                          : Text("NON-ENGLISH",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 16,
                                                   fontWeight: FontWeight.bold)),
-                                      Text(
-                                        'Realesed ',
-                                        style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 12.0,
-                                        ),
-                                      ),
-                                      Text(
-                                          '${widget.movie.releaseDate.year.toString()}-${widget.movie.releaseDate.month.toString()}-${widget.movie.releaseDate.day.toString()}',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold))
                                     ],
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ],
                         ),
+                      ),
+                      MovieDetailWidget(
+                        id: movie.id,
                       ),
                       Container(
                         margin: EdgeInsets.all(16.0),
